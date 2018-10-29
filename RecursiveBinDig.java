@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Assignments.Assignment3;
 
 import static java.util.Arrays.copyOfRange;
 
@@ -38,10 +37,12 @@ public class RecursiveBinDig {
             start++;stop--;layers-=2;
             peel(start,stop);
         }
-        while(flipArr.length<layers){
+        //this one especially needs some work
+        int newLayers=0;
+        while(flipArr.length<newLayers){
             start=midIndex-1;stop=midIndex+1;
             System.out.println(copyOfRange(flipArr,start,stop));
-            start--;stop++;layers+=2;
+            start--;stop++;newLayers+=2;
             peel(start,stop);
         }
     }
