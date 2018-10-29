@@ -31,19 +31,18 @@ public class RecursiveBinDig {
         }
     }
     public void peel(int start,int stop){
+        start=0;stop=theArray.length;
         while(layers>1){
-            start=0;stop=layers;
             System.out.println(copyOfRange(theArray,start,stop));
             start++;stop--;layers-=2;
             peel(start,stop);
         }
         //this one especially needs some work
-        int newLayers=0;
+        int newLayers=0;int newStart=midIndex-1;int newStop=midIndex+1;
         while(flipArr.length<newLayers){
-            start=midIndex-1;stop=midIndex+1;
-            System.out.println(copyOfRange(flipArr,start,stop));
-            start--;stop++;newLayers+=2;
-            peel(start,stop);
+            System.out.println(copyOfRange(flipArr,newStart,newStop));
+            newStart--;newStop++;newLayers+=2;
+            peel(newStart,newStop);
         }
     }
 }
