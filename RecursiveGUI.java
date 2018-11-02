@@ -11,9 +11,9 @@ public class RecursiveGUI extends Application {
   
   int size;
   int[] theArray;
-  int[] flipArray;
   TextField txt;
   Label label;
+  RecursiveBinDig binNum;
   
    @Override 
    public void start(Stage stage) {
@@ -21,7 +21,7 @@ public class RecursiveGUI extends Application {
       txt = new TextField();
       label = new Label("How large is your binary number going to be");
       
-      label.setLayoutX(100);
+      label.setLayoutX(300);
       label.setLayoutY(50);
       
       txt.setLayoutX(100);
@@ -29,11 +29,10 @@ public class RecursiveGUI extends Application {
       
       txt.setOnAction(new EventHandler<ActionEvent>() {
         @Override public void handle(ActionEvent e) {
-          
-          //label.setText("How large is your binary number going to be");
-          
           size = Integer.parseInt(txt.getText());
           label.setText("Enter your binary number");
+          theArray = new int[size];
+          txt.setText("");
           
           txt.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -41,7 +40,12 @@ public class RecursiveGUI extends Application {
                 label.setText("Please make sure the number you enter is the correct size");
               }
               else{
-                
+                for(int a=0; a<size; a++){
+                  theArray[a] = Character.getNumericValue(txt.getText().charAt(a));
+                }
+                binNum = new RecursiveBinDig(size,theArray);
+                String n = binNum.peel();
+                label.setText(n);
               }
             }
           });

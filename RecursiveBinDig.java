@@ -29,11 +29,11 @@ public class RecursiveBinDig {
      * added a param in constructor so that we can get the number we need to change
      */
     public RecursiveBinDig(int layers, int[] theArray){
-        this.layers2=theArray.length+1;
+        this.layers2=0;
         this.layers=layers;
         this.theArray=theArray;
         flipArr=new int[layers];
-        midIndex=((layers+1)/2);
+        midIndex=(layers/2);
     }
     
     private void flippedArr(){
@@ -73,6 +73,11 @@ public class RecursiveBinDig {
     private String peel(int start,int stop,String string){
       /*if layers is less than one it findes theArray[start to stop] and appends those numbers onto string*/
         if(layers>1){
+          int x = layers;
+          while(x<theArray.length){
+            string+=" ";
+            x+=2;
+          }
           for(int a=start; a<stop; a++){
             string+=Integer.toString(theArray[a]);
           }
@@ -84,17 +89,31 @@ public class RecursiveBinDig {
       * layers2 and layers is made to equal 0, to begin getting the flippedArr values
       */
         else if(layers == 1){
+          
+          int x = layers;
+          while(x<theArray.length){
+            string+=" ";
+            x+=2;
+          }
           string+=Integer.toString(theArray[midIndex]);
           string+="\n";
           layers=0;
-          layers2=0;
+          layers2=1;
           return peel(start,stop,string);
         }
       /*if layers2 equals 0,(which should only happen once) it calls the flippedArr() method,
        * appends the midVal of fliped array to string, and adds 2 onto layers2
        */
-        else if(layers2 == 0){
+        else if(layers2 == 1){
+          
           flippedArr();
+          
+          int x = layers2;
+          
+          while(x<flipArr.length){
+            string+=" ";
+            x+=2;
+          }
           
           string+=Integer.toString(flipArr[midIndex]);
           string+="\n";
@@ -103,6 +122,13 @@ public class RecursiveBinDig {
         }
       /*if layers2 is less than theArray.length it finds flipArr[start to stop] and appends those numbers onto string*/
         else if(layers2<=theArray.length){
+          
+          int x = layers2;
+          
+          while(x<flipArr.length){
+            string+=" ";
+            x+=2;
+          }
           for(int a=start; a<stop; a++){
             string+=Integer.toString(flipArr[a]);
           }
