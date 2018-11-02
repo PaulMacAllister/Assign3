@@ -73,11 +73,13 @@ public class RecursiveBinDig {
     private String peel(int start,int stop,String string){
       /*if layers is less than one it findes theArray[start to stop] and appends those numbers onto string*/
         if(layers>1){
+          
           int x = layers;
           while(x<theArray.length){
             string+=" ";
             x+=2;
           }
+          
           for(int a=start; a<stop; a++){
             string+=Integer.toString(theArray[a]);
           }
@@ -95,6 +97,7 @@ public class RecursiveBinDig {
             string+=" ";
             x+=2;
           }
+          
           string+=Integer.toString(theArray[midIndex]);
           string+="\n";
           layers=0;
@@ -109,7 +112,6 @@ public class RecursiveBinDig {
           flippedArr();
           
           int x = layers2;
-          
           while(x<flipArr.length){
             string+=" ";
             x+=2;
@@ -124,11 +126,11 @@ public class RecursiveBinDig {
         else if(layers2<=theArray.length){
           
           int x = layers2;
-          
           while(x<flipArr.length){
             string+=" ";
             x+=2;
           }
+          
           for(int a=start; a<stop; a++){
             string+=Integer.toString(flipArr[a]);
           }
