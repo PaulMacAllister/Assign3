@@ -19,7 +19,7 @@ public class RecursiveGUI extends Application {
    public void start(Stage stage) {
       
       txt = new TextField();
-      label = new Label("How large is your binary number going to be");
+      label = new Label("Enter your binary number");
       
       label.setLayoutX(300);
       label.setLayoutY(50);
@@ -29,27 +29,14 @@ public class RecursiveGUI extends Application {
       
       txt.setOnAction(new EventHandler<ActionEvent>() {
         @Override public void handle(ActionEvent e) {
-          size = Integer.parseInt(txt.getText());
-          label.setText("Enter your binary number");
-          theArray = new int[size];
-          txt.setText("");
-          
-          txt.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-              if(txt.getText().length() != size){
-                label.setText("Please make sure the number you enter is the correct size");
-              }
-              else{
-                for(int a=0; a<size; a++){
-                  theArray[a] = Character.getNumericValue(txt.getText().charAt(a));
-                }
-                binNum = new RecursiveBinDig(theArray);
-                String n = binNum.peel();
-                label.setText(n);
-              }
-            }
-          });
-        }
+          theArray = new int[txt.getText().length()];
+          for(int a=0; a<txt.getText().length(); a++){
+            theArray[a] = Character.getNumericValue(txt.getText().charAt(a));
+          }
+          binNum = new RecursiveBinDig(theArray);
+          String n = binNum.peel();
+          label.setText(n);
+          }
       });
      
      
