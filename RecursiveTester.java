@@ -8,7 +8,7 @@ public class RecursiveTester{
       array[a] = 0;
     }
     
-    RecursiveBinDig test = new RecursiveBinDig(7,array);
+    RecursiveBinDig test = new RecursiveBinDig(array);
     System.out.print(test.peel());
   }
 }

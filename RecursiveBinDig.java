@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-import static java.util.Arrays.copyOfRange;
+import java.lang.IllegalArgumentException;
 
 /**
  *
  * @author elizadoering
+ * @author paulmacallister
  */
 public class RecursiveBinDig {
   
@@ -25,17 +25,28 @@ public class RecursiveBinDig {
     
     /*
      * Edits: PaulMacAllister
-     * changed how the midIndex is calculated so that it will get the mid index of an odd number
+     * checks the entered array to make sure it has an odd number of elements,
+     * if it does it throws an illegalArgumentException, im not sure what exception to use here though
+     * 
      * added a param in constructor so that we can get the number we need to change
+     * removed the layers param, since we can get that from the entered array
+     * 
      */
-    public RecursiveBinDig(int layers, int[] theArray){
+    public RecursiveBinDig(int[] theArray){
+      if(theArray.length%2==0){
+        throw new IllegalArgumentException("Array must have odd number of elements");
+      }
+      else{
         this.layers2=0;
-        this.layers=layers;
+        this.layers=theArray.length;
         this.theArray=theArray;
         flipArr=new int[layers];
         midIndex=(layers/2);
+      }
     }
-    
+  /*Edits:
+   * changed the testing in the for method to theArray.length, since layers is changed throughout the peel method
+   */
     private void flippedArr(){
         for(int i=0;i<theArray.length;i++){
             if(theArray[i]==0)flipArr[i]=1;
@@ -68,6 +79,17 @@ public class RecursiveBinDig {
      * -----------------------------------------------------------------------------------------------------------
      * stop and start are now initialized in the public method, but the same logic is used to change them through each
      * iteration (First array start++ stop--)(Flipped array start-- stop++)
+     * -----------------------------------------------------------------------------------------------------------
+     * I added a 
+     * 
+     *    int x = layers;
+          while(x<theArray.length){
+            string+=" ";
+            x+=2;
+          }
+     *
+     * to each if statement, so that the string is formatted correctly with spaces, I think there is a better way to
+     * do this but its what i came up with
      * 
      */
     private String peel(int start,int stop,String string){

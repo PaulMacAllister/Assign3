@@ -43,7 +43,7 @@ public class RecursiveGUI extends Application {
                 for(int a=0; a<size; a++){
                   theArray[a] = Character.getNumericValue(txt.getText().charAt(a));
                 }
-                binNum = new RecursiveBinDig(size,theArray);
+                binNum = new RecursiveBinDig(theArray);
                 String n = binNum.peel();
                 label.setText(n);
               }
