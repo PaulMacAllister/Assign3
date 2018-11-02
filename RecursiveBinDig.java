@@ -37,7 +37,7 @@ public class RecursiveBinDig {
     }
     
     private void flippedArr(){
-        for(int i=0;i<layers;i++){
+        for(int i=0;i<theArray.length;i++){
             if(theArray[i]==0)flipArr[i]=1;
             if(theArray[i]==1)flipArr[i]=0;
         }
